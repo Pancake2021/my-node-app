@@ -31,7 +31,8 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t pankeit/my-node-app:${{ github.sha }} .
--name: Push hub   
+      
+      - name: Push hub   
         run: |
           docker build -t pankeit/my-node-app:${{ github.ref_name }} .
           docker push pankeit/my-node-app:${{ github.ref_name }}
