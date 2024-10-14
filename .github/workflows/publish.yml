@@ -28,6 +28,6 @@ jobs:
       # Шаг 4: Собрать и запушить Docker-образ
       - name: Build and push Docker image
         run: |
-          docker build -t your_username/my-node-app:${{ github.ref_name }} .
-          docker push your_username/my-node-app:${{ github.ref_name }}
+          docker build -t pankeit/my-node-app:${{ github.ref_name }} .
+          docker push pankeit/my-node-app:${{ github.ref_name }}
 

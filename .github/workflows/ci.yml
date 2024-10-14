@@ -1,6 +1,5 @@
 name: Build and Test
 
-# События, на которые срабатывает Action
 on:
   push:
     branches:
@@ -11,31 +10,27 @@ on:
       - main
       - master
 
-# Задачи (jobs) для выполнения
 jobs:
   build:
-    runs-on: ubuntu-latest  # Среда, где будут выполняться задачи
+    runs-on: ubuntu-latest
 
     steps:
-      # Шаг 1: Клонировать код из репозитория
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Шаг 2: Установить Node.js версии 14
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      # Шаг 3: Установить зависимости проекта
       - name: Install dependencies
         run: npm install
 
-      # Шаг 4: Запустить тесты (если они есть)
       - name: Run tests
         run: npm test
 
-      # Шаг 5: Собрать Docker-образ
       - name: Build Docker image
-        run: docker build -t my-node-app .
+        run: docker build -t pankeit/my-node-app:${{ github.sha }} .
+
+     
 
