@@ -30,12 +30,10 @@ jobs:
         run: npm test
 
       - name: Build Docker image
-        run: docker build -t pankeit/my-node-app:${{ github.sha }} .
+        run: docker build -t pankeit/my-node-app:test1 .
       
       - name: Push hub   
-        run: |
-          docker build -t pankeit/my-node-app:${{ github.ref_name }} .
-          docker push pankeit/my-node-app:${{ github.ref_name }}
+        run: docker push pankeit/my-node-app:test1
 
      
 
